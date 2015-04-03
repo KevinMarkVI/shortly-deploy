@@ -3,6 +3,7 @@
 .LSOverride
 azure.err
 iisnode.yml
+node_modules/*
 
 # Icon must ends with two \r.
 Icon
@@ -15,3 +16,5 @@ Icon
 .floobit
 .floo
 .flooignore
+
+node_modules/*

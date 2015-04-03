@@ -3,6 +3,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';\n',
+      },
+      client: {
+        dest:"public/dist/shortly-express.js",
+        src:["public/client/*.js"]
+      },
+
+
     },
 
     mochaTest: {
@@ -21,11 +30,16 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist/shortly-express.min.js': ['public/dist/shortly-express.js'],
+        }
+      }
     },
 
     jshint: {
       files: [
-        // Add filespec list here
+        ['public/**/*.js']
       ],
       options: {
         force: 'true',
@@ -38,6 +52,7 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      'public/dist/style.min.css': ['public/style.css'],
     },
 
     watch: {
@@ -94,6 +109,10 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    "jshint",
+    "concat",
+    "uglify",
+    "cssmin"
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -106,6 +125,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    
   ]);
 
 
