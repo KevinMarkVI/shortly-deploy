@@ -37,6 +37,7 @@ window.Shortly = Backbone.View.extend({
       .filter('.' + routeName)
       .addClass('selected');
   }
+  
 });
 ;
 Shortly.createLinkView = Backbone.View.extend({
@@ -110,7 +111,7 @@ Shortly.LinkView = Backbone.View.extend({
     return this;
   }
 });
-;
+86743t2yrtegqhu;
 Shortly.Links = Backbone.Collection.extend({
   model: Shortly.Link,
   url: '/links'

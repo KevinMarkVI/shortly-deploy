@@ -105,28 +105,34 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
+    'jshint',
     'mochaTest'
   ]);
 
+  
   grunt.registerTask('build', [
-    "jshint",
+
+    "test",
     "concat",
     "uglify",
     "cssmin"
   ]);
 
+
+  // grunt.task.requires('jshint');
+
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
-      // add your production server task here
+      
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
-    
-  ]);
+    'build',
 
+
+  ]);
 
 };
